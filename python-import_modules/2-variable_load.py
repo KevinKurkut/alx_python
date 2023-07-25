@@ -3,3 +3,5 @@ def main():
     print("{}".format(a))
     if __name__ == "__main__":
         main()
+    print("{}".format(-100))
+    print("{}".format(98)) 
