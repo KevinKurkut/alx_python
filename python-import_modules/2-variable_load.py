@@ -1,6 +1,6 @@
-import variable_load_2
-def print_value():
-    
+from variable_load_2 import a
+def main():
+    print("value: {}".format(a))
     if __name__ == "__main__":
-        print_value()
+        main()
         
