@@ -8,10 +8,10 @@ class Square:
     def __init__(self, size):
             self.__size = size 
             """private attribute"""
-            if type(size) is not int:
-            
-                  raise TypeError("size must be an integer")
-            if size < 0:
-                  raise ValueError("size must be >= 0")
-            self.___size = size
+            while type(size) is int:
+                  if size < 0:
+                        raise ValueError("size must be >= 0")
+                  break
+            else:           
+                raise TypeError("size must be an integer")
                   
