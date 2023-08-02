@@ -36,10 +36,11 @@ class Square:
           """printing a square"""
           """public insance method that prins the stdout the square with the character #"""
           def my_print(self):
-                if self.__size ==0:
+                if self.__size == 0:
                       print("")
+                else:
                       for i in range(0, self.__size):
-                            for j in range(0, self.__size):
+                            for k in range(0, self.__size):
                                   print("#", end="")
-                            print()
-                                
+                            print("")
+                            
