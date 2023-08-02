@@ -5,21 +5,18 @@ class Square:
     args:
     size(param
     ) is assumed to be an int"""
-    def __init__(self, size):
-            self.size = size 
+    def __init__(self, size=0):
+            self.__size = size 
             """private attribute"""
-            while type(size) is not int:
-                  if size <= 0:
+            while type(size) is int:
+                  if size < 0:
                         raise ValueError("size must be >= 0")
                   break
-                  
             else:           
                 raise TypeError("size must be an integer")
-    """public instance method takes self parameter and can be accessed inside and outside class"""
+    """public instance method takes parameter self and can be accessed both inside and outside class"""
     def area(self):
-          """this is a public instance method"""
-          x=Square()
-          """creating instance of a class"""
-          x.area()
-          """calling"""
-                  
+          """area"""
+          return self.__size ** 2
+          
+         
