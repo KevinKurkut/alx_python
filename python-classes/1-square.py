@@ -5,11 +5,11 @@ class Square:
     args:
     size(param
     ) is assumed to be an int"""
-    def __init__(self, size):
+    def __init__(self, size=0):
             self.__size = size 
             """private attribute"""
             while type(size) is int:
-                  if size <= 0:
+                  if size < 0:
                         raise ValueError("size must be >= 0")
                   break
             else:           
