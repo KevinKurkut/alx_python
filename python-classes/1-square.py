@@ -9,7 +9,7 @@ class Square:
             self.__size = size 
             """private attribute"""
             while type(size) is int:
-                  if size < 0:
+                  if size <= 0:
                         raise ValueError("size must be >= 0")
                   break
             else:           
