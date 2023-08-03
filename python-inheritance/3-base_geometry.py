@@ -1,5 +1,5 @@
 """creating an empty class"""
-class BaseGeometry:
+class BaseGeometry():
     """BaseGeometry class"""
     pass
     
