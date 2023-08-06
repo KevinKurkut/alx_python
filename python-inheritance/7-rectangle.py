@@ -29,11 +29,11 @@ class Rectangle(BaseGeometry):
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
-        self.__height = height
-        """implementing area method"""
-        def area(self):
-            return self.__width * self.__height
-        """str()"""
-        def __str__(self):
-            return f"[Rectangle] {self.__width} / {self.__height}"
-            
+        self.__height= height
+        """define a special __str__() method in the class to customize the string representation of the object."""
+    def __str__(self):
+        return f"[Rectangle] {self.__width}/{self.__height}"
+
+        """area() method  implemented"""
+    def area(self):
+        return self.__width * self.__height
