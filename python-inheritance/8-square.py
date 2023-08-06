@@ -40,6 +40,7 @@ class Rectangle(BaseGeometry):
 
 """ class Square that inherits from Rectangle"""
 class Square(Rectangle):
+    """Square that inherits from Rectangle"""
     def __init__(self, size):
 
         """validate using integer validator"""
