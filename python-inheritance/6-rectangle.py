@@ -21,6 +21,7 @@ class BaseGeometry(metaclass = parent):
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
         """"Rectangle class"""
+        
 class Rectangle(BaseGeometry):
     """inherits all property of base geometry"""
     def __init__(self, width, height):
