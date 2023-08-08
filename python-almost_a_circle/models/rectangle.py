@@ -1,6 +1,6 @@
 """using the Base class
 in our rectangle"""
-from base import Base
+from models.base import Base
 """First Rectangle"""
 class Rectangle(Base):
     """Private instance attributes
