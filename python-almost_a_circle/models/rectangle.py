@@ -1,4 +1,5 @@
-"""import base.py"""
+"""using the Base class
+in our rectangle"""
 from base import Base
 """First Rectangle"""
 class Rectangle(Base):
@@ -14,34 +15,36 @@ class Rectangle(Base):
         self.__y = y 
         """Call the parent class constructor"""
         super().__init__()
-        """Private instance attributes, each with its own public getter and setter"""
-        #width setter function
+        """Private instance attributes, each with its own public getter and 
+          with its own public setter"""
         @property
         def width(self):
             self.__width = width
-        #getter function
+        """Private instance attribute with its own public getter"""
         @width.getter
         def width(self, value):
             self.__width = value
-        #height setter function
+        """Private instance attribute with its own public setter"""
         @property
         def height(self):
             self.___height = height
-        #getter function
+        """Private instance attribute with its own public setter"""
         @height.getter
         def heigth(self, value):
             self.___height = value
-        #x setter function
+        """Private instance attribute with its own public setter"""
         @property
         def x(self):
             self.___x  = x
-        # getter function
+        """Private instance attribute with its own public setter"""
         @x.getter
         def x(self, value):
             self.___x = value
+        """Private instance attribute with its own public setter"""
         @property
         def y(self):
             self.___y = y
+        """Private instance attribute with its own public getter"""
         @y.getter
         def y(self, value):
             self.___y = value
