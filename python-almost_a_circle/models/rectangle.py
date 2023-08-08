@@ -19,33 +19,33 @@ class Rectangle(Base):
           with its own public setter"""
         @property
         def width(self):
-            self.__width = width
-        """Private instance attribute with its own public getter"""
-        @width.getter
+          return self.__width
+
+        @width.setter
         def width(self, value):
             self.__width = value
-        """Private instance attribute with its own public setter"""
+
         @property
         def height(self):
-            self.___height = height
-        """Private instance attribute with its own public setter"""
-        @height.getter
-        def heigth(self, value):
-            self.___height = value
-        """Private instance attribute with its own public setter"""
+           return self.__height
+
+        @height.setter
+        def height(self, value):
+           self.__height = value
+        
         @property
         def x(self):
-            self.___x  = x
-        """Private instance attribute with its own public setter"""
-        @x.getter
+         return self.__x
+        
+        @x.setter
         def x(self, value):
-            self.___x = value
-        """Private instance attribute with its own public setter"""
+           self.__x = value
+        
         @property
         def y(self):
-            self.___y = y
-        """Private instance attribute with its own public getter"""
-        @y.getter
+           return self.__y
+        
+        @y.setter
         def y(self, value):
-            self.___y = value
-            
+           self.__y = value
+           
