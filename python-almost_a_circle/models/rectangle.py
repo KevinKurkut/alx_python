@@ -8,24 +8,44 @@ class Rectangle(Base):
    args:
     self, width, height, x=0, y=0, id=None """
     def __init__(self, width, height, x=0, y=0, id=None):
-        """Private instance attributes"""
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y 
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y 
         """Call the parent class constructor"""
         super().__init__(id)
-        """Private instance attributes, each with its own public getter and 
-          with its own public setter"""
         @property
         def width(self):
-          """accessing width"""
-          return self.__width
+            """accessing width property"""
+            return self.__width
+        @width.setter
+        def width(self, value):
+            """set wiidth"""
+            self.__width = value
 
-        """Private instance attributes, each with its own public getter and 
-          with its own public setter"""
         @property
         def height(self):
-           """accessing height"""
-           return self.__height
-        
+            """accessing height"""
+            return self.__height
+        @height.setter
+        def height(self, value):
+            """setting heigth"""
+            self.__height = value
+
+        @property
+        def x(self):
+            """accessing x"""
+            return self.__x
+        @x.setter
+        def x(self, value):
+            """set x"""
+            self.__x = value
+
+        @property
+        def y(self):
+            """access y"""
+            return self.__y
+        @y.setter
+        def y(self, value):
+            """access y"""
+            self.__y = value
