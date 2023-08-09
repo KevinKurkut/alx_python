@@ -19,33 +19,13 @@ class Rectangle(Base):
           with its own public setter"""
         @property
         def width(self):
+          """accessing width"""
           return self.__width
 
-        @width.setter
-        def width(self, value):
-            self.__width = value
-
+        """Private instance attributes, each with its own public getter and 
+          with its own public setter"""
         @property
         def height(self):
+           """accessing height"""
            return self.__height
-
-        @height.setter
-        def height(self, value):
-           self.__height = value
         
-        @property
-        def x(self):
-         return self.__x
-        
-        @x.setter
-        def x(self, value):
-           self.__x = value
-        
-        @property
-        def y(self):
-           return self.__y
-        
-        @y.setter
-        def y(self, value):
-           self.__y = value
-           
