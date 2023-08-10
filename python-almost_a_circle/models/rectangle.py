@@ -15,64 +15,38 @@ class Rectangle(Base):
         """Call the parent class constructor"""
         super().__init__(id)
 
-        @property
-        def width(self):
+    @property
+    def width(self):
             """accessing width property"""
             return self.__width
-        @width.setter
-        def width(self, value):
+    @width.setter
+    def width(self, value):
             """set wiidth"""
-            while type(value) is int:
-                  if value < 0:
-                        raise ValueError("width must be >= 0")
-                  break
-            else:           
-                raise TypeError("width must be an integer")
             self.__width = value
-
-        @property
-        def height(self):
+    @property
+    def height(self):
             """accessing height"""
             return self.__height
-        @height.setter
-        def height(self, value):
-            """adding validation of all setter method"""
-            while type(value) is int:
-                  if value < 0:
-                        raise ValueError("height must be >= 0")
-                  break
-            else:           
-                raise TypeError("height must be an integer")
-            
+    @height.setter
+    def height(self, value):        
             """setting heigth"""
             self.__height = value
 
-        @property
-        def x(self):
+    @property
+    def x(self):
             """accessing x"""
             return self.__x
-        @x.setter
-        def x(self, value):
+    @x.setter
+    def x(self, value):
             """set x"""
-            while type(value) is int:
-                  if value < 0:
-                        raise ValueError("x must be >= 0")
-                  break
-            else:           
-                raise TypeError("x must be an integer")
             self.__x = value
 
-        @property
-        def y(self):
+    @property
+    def y(self):
             """access y"""
             return self.__y
-        @y.setter
-        def y(self, value):
+    @y.setter
+    def y(self, value):
             """access y"""
-            while type(value) is int:
-                  if value < 0:
-                        raise ValueError("y must be >= 0")
-                  break
-            else:           
-                raise TypeError("y must be an integer")
             self.__y = value
+            
