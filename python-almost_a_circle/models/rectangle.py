@@ -72,4 +72,4 @@ class Rectangle(Base):
         Returns:
             int: area
         """
-        return self.__width * self.__heigh
+        return self.__width * self.__height
