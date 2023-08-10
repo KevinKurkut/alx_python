@@ -49,4 +49,3 @@ class Rectangle(Base):
     def y(self, value):
             """access y"""
             self.__y = value
-            
