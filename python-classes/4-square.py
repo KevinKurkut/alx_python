@@ -33,14 +33,10 @@ class Square:
                   break
           else:           
                 raise TypeError("size must be an integer")
-          """printing a square"""
-          """public insance method that prins the stdout the square with the character #"""
-          def my_print(self):
-                if self.__size == 0:
-                      print("")
-                else:
-                      for i in range(0, self.__size):
-                            for k in range(0, self.__size):
-                                  print("#", end="")
-                            print("")
-                            
+    def my_print(self):   
+      """printing a square"""
+      if self.size <= 0:
+            print() #new line
+      else:
+            for _ in range(self.size):
+                print("#" * self.size)  
