@@ -73,3 +73,10 @@ class Rectangle(Base):
             int: area
         """
         return self.__width * self.__height
+    def display(self):
+           """public method that prints in stdout the Rectangle instance with the character #
+            returns:
+            prints in stdout #
+            """
+           for _ in range(self.__height):
+            print("#" * self.__width)
