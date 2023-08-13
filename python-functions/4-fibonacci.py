@@ -1,10 +1,15 @@
 def fibonacci_sequence(n):
-    if n<=0:
+    """function takes a n as input parameter"""
+    if n <= 0:
         return []
-    elif n==1:
+    elif n == 1:
         return [0]
+    elif n == 2:
+        return [0, 1]
     else:
-        sequence= [0, 1]
+        sequence = [0, 1]
         while len(sequence) < n:
-            sequence.append(sequence[-1] + sequence[-2])
-            return sequence
+            next_seq = sequence[-1] + sequence[-2]
+            sequence.append(next_seq)
+        return sequence
+    
