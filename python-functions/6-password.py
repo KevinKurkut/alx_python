@@ -1,10 +1,11 @@
 def validate_password(password):
-    if len(password) < 0:
+   if len(password) < 8:
         return False
-    elif not any(char.isupper() for char in password):
+   #check spaces
+   if " " in password:
         return False
-    elif not any(char.islower() for char in password):
-        return False
-    elif not any(char.isdigit() for char in password):
-        return False
-    
+   upper = any(char.isupper() for char in password)
+   lower = any(char.islower() for char in password)
+   digit = any(char.isdigit() for char in password)
+
+   return upper and lower and digit
