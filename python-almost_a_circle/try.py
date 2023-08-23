@@ -1,11 +1,21 @@
 #!/usr/bin/python3
 """ Check """
-from models.rectangle import Rectangle
+from models.square import Square
 
-r = Rectangle(10, 12)
-ra = r.area()
-if ra != 120:
-    print("Wrong area value: {}".format(ra))
-    exit(1)
-    
-print("OK", end="")
+s = Square(2)
+s.display()
+
+s = Square(5)
+s.display()
+
+s = Square(1)
+s.display()
+
+s = Square(5, 2)
+s.display()
+
+s = Square(5, 3, 1)
+s.display()
+
+s = Square(9, 12, 8)
+s.display()

@@ -85,3 +85,14 @@ class Rectangle(Base):
             [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
     def __str__(self):
           return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+    """adding the public method def update(self, *args):
+    assigns:
+    1st argument should be the id attribute
+    2nd argument should be the width attribute
+    3rd argument should be the height attribute
+    4th argument should be the x attribute
+    5th argument should be the y attribute"""
+    def update(self, *args):
+           print (f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}")
+
+    

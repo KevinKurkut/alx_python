@@ -12,6 +12,9 @@ class Square(Rectangle):
         self.height = size
         self.x = x
         self.y = y
+        """calling pirint method from parent"""
+        Rectangle.display(self)
+
     """defining getter method"""
     @property
     def size(self):
