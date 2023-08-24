@@ -7,11 +7,12 @@ conn = MySQLdb.connect(
     port=3306,
     user=argv[1],
     passwd=argv[2],
-    db=argv[3]
+    db=argv[3],
+    charset="utf8"
     )
 cur = conn.cursor()
 # execute SQL query using execute() method
-query = "SELECT * FROM states WHERE name LIKE 'N%' COLLATE utf8_bin ORDER BY id ASC;"
+query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC;"
 cur.execute(query)
 """# Fetch a rows """
 results = cur.fetchall()
