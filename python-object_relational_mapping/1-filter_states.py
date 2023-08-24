@@ -12,7 +12,7 @@ conn = MySQLdb.connect(
     )
 cur = conn.cursor()
 # execute SQL query using execute() method
-query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC;"
+query = "SELECT * FROM states WHERE UPPER(name) LIKE 'N%' ORDER BY id ASC;"
 cur.execute(query)
 """# Fetch a rows """
 results = cur.fetchall()
