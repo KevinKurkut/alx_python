@@ -12,7 +12,9 @@ conn = MySQLdb.connect(
     )
 cur = conn.cursor()
 # execute SQL query using execute() method
-query = "SELECT cities.id, cities.name, states.name FROM cities JOIN states ON cities.state_id = states.id ORDER BY cities.id ASC"
+query = ("SELECT cities.id, cities.name, states.name "
+         "FROM cities JOIN states ON cities.state_id = states.id "
+         "ORDER BY cities.id ASC")
 cur.execute(query)
 """# Fetch a rows """
 results = cur.fetchall()
