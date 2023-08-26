@@ -18,7 +18,8 @@ cur.execute(query)
 """# Fetch a rows """
 results = cur.fetchall()
 for row in results:
-    print(row)
-    """close both database and cursor"""
+    if row[1].startswith("N"):
+        print(row)
+"""close both database and cursor"""
 cur.close()
 conn.close()
