@@ -19,8 +19,8 @@ query = ("SELECT cities.name "
 cur.execute(query)
 """# Fetch a rows """
 results = cur.fetchall()
-for row in results:
-    print(row)
+cities_list = ', '.join([row[0] for row in results])
+print(cities_list)
 """close both database and cursor"""
 cur.close()
 conn.close()
