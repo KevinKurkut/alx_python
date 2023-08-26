@@ -12,14 +12,12 @@ conn = MySQLdb.connect(
     )
 cur = conn.cursor()
 # execute SQL query using execute() method
-query = "SELECT id, name FROM cities JOIN states ON cities.state_id = state.id;"
-query = query.format(argv[4])
+query = "SELECT cities.id, cities.name, states.name FROM cities JOIN states ON cities.state_id = states.id ORDER BY cities.id ASC"
 cur.execute(query)
 """# Fetch a rows """
 results = cur.fetchall()
 for row in results:
-    if row[1].startswith("N"):
-        print(row)
+    print(row)
 """close both database and cursor"""
 cur.close()
 conn.close()
