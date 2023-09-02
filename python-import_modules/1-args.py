@@ -1,4 +1,5 @@
-import sys
+if __name__ == "__main__":
+    import sys
 """subsequent elements from index 1"""
 args = sys.argv[1:]
 argument_number = len(args)
