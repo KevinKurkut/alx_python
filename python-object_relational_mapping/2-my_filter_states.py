@@ -13,7 +13,7 @@ conn = MySQLdb.connect(
     )
 cur = conn.cursor()
 # execute SQL query using execute() method
-query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
+query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id ASC"
 query = query.format(argv[4])
 cur.execute(query)
 """# Fetch a rows """
