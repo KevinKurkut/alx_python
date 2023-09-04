@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """importing modules"""
 import MySQLdb
 from sys import argv
@@ -12,13 +13,11 @@ conn = MySQLdb.connect(
     )
 cur = conn.cursor()
 # execute SQL query using execute() method
-query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC;"
-query = query.format(argv[4])
+query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(argv[4])
 cur.execute(query)
 """# Fetch a rows """
 results = cur.fetchall()
 for row in results:
-    if row[1].startswith("N"):
         print(row)
 """close both database and cursor"""
 cur.close()
