@@ -13,7 +13,8 @@ conn = MySQLdb.connect(
     )
 cur = conn.cursor()
 # execute SQL query using execute() method
-query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(argv[4])
+query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
+query = query.format(argv[4])
 cur.execute(query)
 """# Fetch a rows """
 results = cur.fetchall()
