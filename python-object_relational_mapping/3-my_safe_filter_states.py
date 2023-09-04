@@ -1,7 +1,7 @@
-"""importing modules"""
-import MySQLdb
-from sys import argv
+#!/usr/bin/env python
 """open database communication"""
+from sys import argv
+import MySQLdb
 conn = MySQLdb.connect(
     host="localhost",
     port=3306,
@@ -12,11 +12,10 @@ conn = MySQLdb.connect(
     )
 cur = conn.cursor()
 # execute SQL query using execute() method
-cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC" (argv[4], ))
+cur.execute("SELECT * FROM states WHERE name= %s ORDER BY id ASC", (argv[4], ))
 """# Fetch a rows """
 results = cur.fetchall()
 for row in results:
-    if row[1].startswith("N"):
         print(row)
 """close both database and cursor"""
 cur.close()
