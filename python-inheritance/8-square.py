@@ -2,7 +2,7 @@
 """
 create a square class
 """
-Rectangle = __import__('6-rectangle').Rectangle
+Rectangle = __import__('7-rectangle').Rectangle
 class Square(Rectangle):
     """Square that inherits from Rectangle"""
     def __init__(self, size):
