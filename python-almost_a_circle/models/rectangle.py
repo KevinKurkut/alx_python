@@ -78,7 +78,7 @@ class Rectangle(Base):
             returns:
             prints in stdout #
             """
-           for _ in range(self.__height):
+           for y in range(self.__height):
             print("#" * self.__width)
             """overriding the __str__ method
             returns:
