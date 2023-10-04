@@ -93,6 +93,13 @@ class Rectangle(Base):
     4th argument should be the x attribute
     5th argument should be the y attribute"""
     def update(self, *args):
+           """
+           1st argument should be the id attribute
+           2nd argument should be the width attribute
+           3rd argument should be the height attribute
+           4th argument should be the x attribute
+           5th argument should be the y attribute
+           """
            print (f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}")
 
     
