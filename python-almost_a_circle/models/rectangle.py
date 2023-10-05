@@ -78,8 +78,11 @@ class Rectangle(Base):
             returns:
             prints in stdout #
             """
-           for y in range(self.__height):
-            print("#"*self.__width)
+           for i in range(self.__y):
+            print()
+            for i in range(self.__height):
+                   print(" "*self.__x, end="")
+                   print("#"*self.__width)   
             """overriding the __str__ method
             returns:
             [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
