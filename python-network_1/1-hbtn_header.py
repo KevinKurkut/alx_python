@@ -1,8 +1,8 @@
-"""import  requests"""
 import requests
-"""import sys module"""
 import sys
-"""Write a Python script that takes in a URL, sends a request to the URL and 
-displays the value of the variable X-Request-Id in the response header"""
-response = requests.get('https://alu-intranet.hbtn.io/status')
-response.header.get('X-Request-Id')
+
+if __name__ == "__main__":
+    url = sys.argv[1]
+    respond = requests.get(url)
+    result = respond.headers.get('X-Request-Id')
+    print(result)
