@@ -7,4 +7,4 @@ if __name__ == "__main__":
     password = sys.argv[2]
     response = requests.get(url, auth=HTTPBasicAuth(username, password))
     jsonobj = response.json()
-    print(jsonobj.get(id))
+    print(jsonobj.get('id'))
