@@ -1,21 +1,20 @@
 import requests
 import sys
 if __name__ == "__main__":
-    if len(sys.argv)>1:
-        q=sys.argv[1]
+    if len(sys.argv) > 1:
+        letter=sys.argv[1]
     else:
-        q=""
-    url_post = "http://0.0.0.0:5000/search_user"    
-    newData={"q": q}
-    post_response = requests.post(url_post, json=newData)
-    try:
-        json =post_response.json()
-        if not json:
+        letter=""
+    param={'q':letter}
+    url='http://0.0.0.0:5000/search_user'
+    request=requests.post(url, data=param)    
+    if request.headers.get('content-type'=='json'):
+        if request.json()=={}:
             print("No result")
         else:
-            id= json.get("id")
-            name= json.get("namw")
-            print("[{}] {}".format(id, name))
-    except ValueError as e:
-        print("Not a valid JSON")
-    
+            id=request.json.get('id')
+            name=request.json.get('name')
+            print('[{}] {}'.format(id, name))
+    else:
+        print('Not a valid JSON')
+        
