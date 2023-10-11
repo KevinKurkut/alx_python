@@ -1,10 +1,13 @@
+#!/usr/bin/python3
+"""Start link class to table in database 
+"""
+
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
-"""class States
-id int primary auto increment
-name
+"""class definition of a State and an instance Base = declarative_base():
+State class inherits from Base
 """
 class States(Base):
     __tablename__ = 'states'
