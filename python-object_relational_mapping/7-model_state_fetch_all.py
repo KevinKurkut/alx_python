@@ -6,16 +6,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
-username= sys.argv[1]
-password=sys.argv[2]
-db=sys.argv[3]
-
-engine = create_engine(f'myql:/s/{username}:{password}@localhost:3306/{db}')
-Base.metadata.bind = engine
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
-
-states = session.query(State).order_by(State.id).all()
-for state in states:
-    print(f'{state.id}: {state.name}')
-session.close()
+if __name__=="__main__":
+    engine=create_engine("mysql+mysqldb://{}:{}@localhost/{}".format(sys.argv[1],sys.argv[2],sys.argv[3]))
+    Base.metadata.create_all(engine)
+    Session=sessionmaker(bind=engine)
+    session=Session()
+    for state in session.query(State).order_by(State.id).all():
+        print("{}: {}".format(state.id,state.name))
+    session.close()
