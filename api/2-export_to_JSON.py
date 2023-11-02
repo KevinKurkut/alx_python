@@ -1,21 +1,20 @@
 #!/usr/bin/python3
-"""import requests and json modules"""
-import json
-import requests
-"""initialize store object"""
-all_tasks = {}
-for user_id in range(1, 11):
-    request = requests.get(
-        f'https://jsonplaceholder.typicode.com/users/{user_id}/todos')
-    data = request.json()
+"""impoert necessary modules"""
+from json import dump
+from requests import get
+from sys import argv
+if __name__ == "__main__":
+    todo_url = "https://jsonplaceholder.typicode.com/user/{}/todos".format(argv[1])
+    name_url = "https://jsonplaceholder.typicode.com/users/{}".format(argv[1])
+    todo_result = get(todo_url).json()
+    name_result = get(name_url).json()
 
-    tasks = []
+    todo_list = []
+    for todo in todo_result:
+        todo_dict = {}
+        todo_dict.update({ "USER_ID": [{"task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"}, {
+            "task": "TASK_TITLE", "completed": TASK_COMPLETED_STATUS, "username": "USERNAME"}, ... ]})
+        todo_list.append(todo_dict)
 
-    for item in data:
-        tasks.append({"username": f"USER_{user_id}", "task": item.get('title'), "completed": item.get('completed')})
-
-    all_tasks[str(user_id)] = tasks
-json_file = "2.json"
-
-with open(json_file, mode='w') as file:
-    json.dump(all_tasks, file)
+    with open("USER_ID.json".format(argv[1]), 'w') as f:
+        dump({argv[1]: todo_list}, f)
