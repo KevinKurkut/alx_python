@@ -1,33 +1,32 @@
-#usr/bin/python
+import csv
 import requests
 import sys
-import csv
+def get_employee_data(employee_id):
+    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
 
-id = sys.argv[1]
-request = requests.get('https://jsonplaceholder.typicode.com/users/' + id)
-request2 = requests.get('https://jsonplaceholder.typicode.com/users/' + id + '/todos')
-data = request.json()
-data2 = request2.json()
-completed = 0
-tasks = []
-
-for i in data2:
-    if i.get('completed') == True:
-        completed = completed + 1
-        tasks.append([id, data.get('name'), "Completed", i.get('title')])
-    else:
-        tasks.append([id, data.get('name'), "Not Completed", i.get('title')])
-
-csv_file = "{}.csv".format(id)
-
-with open(csv_file, mode='w', newline='') as file:
-    writer = csv.writer(file)
-    #columns
-    writer.writerows(tasks)
-
-print(f'Employee {data.get("name")} is done with tasks ({completed}/{len(data2)}):')
-for item in data2:
-    if item.get('completed') == True:
-        print(f'\t {item.get("title")}')
-
-print(f'Data exported to {csv_file}.')
+    try:
+        user_response = requests.get(user_url)
+        user_data = user_response.json()
+        user_id = user_data.get('id')
+        username = user_data.get('username')
+        todos_response = requests.get(todos_url)
+        todos_data = todos_response.json()
+        csv_filename = f"{user_id}.csv"
+        with open(csv_filename, 'w', newline='') as csv_file:
+            csv_writer = csv.writer(csv_file)
+            csv_writer.writerow(
+                ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+            for task in todos_data:
+                csv_writer.writerow(
+                    [user_id, username, task["completed"], task["title"]])
+        print(f"Data stored in {csv_filename}")
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("<employee_id>")
+        sys.exit(1)
+employee_id = int(sys.argv[1])
+get_employee_data(1)
