@@ -1,28 +1,46 @@
+#!/usr/bin/python3
+"""
+Python script to export data in the CSV format.
+"""
+
 import csv
-import json
 import requests
 import sys
 
 
-employee_id = sys.argv[1]
-api_request = requests.get(
-    "https://jsonplaceholder.typicode.com/users/%7B%7D".format(employee_id))
-api_request1 = requests.get(
-    "https://jsonplaceholder.typicode.com/users/%7B%7D/todos".format(employee_id))
-data = api_request.text
-pjson = json.loads(data)
-data1 = api_request1.text
-pjson1 = json.loads(data1)
+def export_to_CSV(user_id):
+    employee_name = requests.get(
+        "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
+    ).json()["name"]
+    tasks = requests.get(
+        "https://jsonplaceholder.typicode.com/users/{}/todos".format(user_id)
+    ).json()
+
+    tasks_data = []
+
+    for task in tasks:
+        tasks_data.append(
+            [
+                str(user_id),
+                employee_name,
+                task["completed"],
+                task["title"],
+            ]
+        )
+
+    with open(str(user_id) + ".csv", "w", encoding="UTF8", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(tasks_data)
 
 
-# export data to csv data
-filename = "{}.csv".format(employee_id)
-with open(filename, 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-    for item in pjson1:
-        user_id = employee_id
-        username = pjson['username']
-        task_completed_status = item['completed']
-        task_title = item['title']
-        writer.writerow([user_id, username, task_completed_status, task_title])
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python3 script_name.py EMPLOYEE_ID")
+        sys.exit(1)
+
+    try:
+        employee_id = int(sys.argv[1])
+        export_to_CSV(employee_id)
+    except ValueError:
+        print("Please provide a valid employee ID.")
         
