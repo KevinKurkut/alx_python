@@ -1,50 +1,28 @@
-#!/usr/bin/python3
 import csv
+import json
 import requests
 import sys
 
 
-def get_employee_data(employee_id):
-    # Define the API endpoints
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
-
-    try:
-        # Fetch employee data
-        user_response = requests.get(user_url)
-        user_data = user_response.json()
-        user_id = user_data.get('id')
-        username = user_data.get('username')
-
-        # Fetch TODO list data
-        todos_response = requests.get(todos_url)
-        todos_data = todos_response.json()
-
-        # Create a CSV file for the employee
-        csv_filename = f"{user_id}.csv"
-        with open(csv_filename, 'w', newline='') as csv_file:
-            csv_writer = csv.writer(csv_file)
-
-            # Write header row
-            csv_writer.writerow(
-                ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-
-            # Write task data to the CSV
-            for task in todos_data:
-                csv_writer.writerow(
-                    [user_id, username, task["completed"], task["title"]])
-
-        print(f"Data exported to {csv_filename}")
-
-    except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
-        sys.exit(1)
+employee_id = sys.argv[1]
+api_request = requests.get(
+    "https://jsonplaceholder.typicode.com/users/%7B%7D".format(employee_id))
+api_request1 = requests.get(
+    "https://jsonplaceholder.typicode.com/users/%7B%7D/todos".format(employee_id))
+data = api_request.text
+pjson = json.loads(data)
+data1 = api_request1.text
+pjson1 = json.loads(data1)
 
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
-        sys.exit(1)
-
-employee_id = int(sys.argv[1])
-get_employee_data(1)
+# export data to csv data
+filename = "{}.csv".format(employee_id)
+with open(filename, 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+    for item in pjson1:
+        user_id = employee_id
+        username = pjson['username']
+        task_completed_status = item['completed']
+        task_title = item['title']
+        writer.writerow([user_id, username, task_completed_status, task_title])
+        
