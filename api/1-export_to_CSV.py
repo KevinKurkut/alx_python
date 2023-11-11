@@ -16,8 +16,5 @@ filename = f"{user_id}.csv"
 with open(filename, "w", newline="") as file:
     csvwriter = csv.writer(file, quoting=csv.QUOTE_ALL)
     for task in data_todos:
-        csvwriter.writerow(
-            [user_id, str(data_user["username"]), task["completed"], task["title"]]
-        )
-
-        
+        csvwriter.writerow([user_id, str(data_user["username"]), task["completed"], task["title"]])
+    
