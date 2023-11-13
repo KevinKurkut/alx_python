@@ -1,20 +1,36 @@
-#!/usr/bin/python3
 import csv
 import requests
 import sys
 
-user_id = str(sys.argv[1])
+if len(sys.argv) != 2:
+    print("Usage: python script.py <user_id>")
+    sys.exit(1)
 
-request_user = "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
-request_todos = "https://jsonplaceholder.typicode.com/users/{}/todos".format(user_id)
+id = sys.argv[1]
 
-data_user = requests.get(request_user).json()
-data_todos = requests.get(request_todos).json()
+# Fetch user data and tasks
+try:
+    user_request = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}')
+    tasks_request = requests.get(f'https://jsonplaceholder.typicode.com/users/{id}/todos')
 
-filename = f"{user_id}.csv"
+    user_request.raise_for_status()
+    tasks_request.raise_for_status()
 
-with open(filename, "w", newline="") as file:
-    csvwriter = csv.writer(file, quoting=csv.QUOTE_ALL)
-    for task in data_todos:
-        csvwriter.writerow([user_id, str(data_user["username"]), task["completed"], task["title"]])
-    
+    user_data = user_request.json()
+    tasks_data = tasks_request.json()
+
+    username = user_data.get('username', 'Unknown')
+
+    filename = f"{id}.csv"
+
+    with open(filename, "w", newline="") as csv_file:
+        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
+        csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+
+        for task in tasks_data:
+            csv_writer.writerow([id, username, task["completed"], task["title"]])
+
+except requests.exceptions.RequestException as e:
+    print(f"Error: Unable to fetch data - {e}")
+except Exception as e:
+    print(f"Error: An unexpected error occurred - {e}")
