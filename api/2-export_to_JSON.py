@@ -1,8 +1,8 @@
 """import neessary modules
 requests, json , sys"""
+import json
 import requests
 import sys
-import json
 """function to perform required tasks"""
 def tasks(user_id):
     user_info = requests.get(f'https://jsonplaceholder.typicode.com/users/{user_id}')
