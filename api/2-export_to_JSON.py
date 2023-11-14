@@ -1,7 +1,9 @@
+"""import neessary modules
+requests, json , sys"""
 import requests
 import sys
 import json
-
+"""function to perform required tasks"""
 def tasks(user_id):
     user_info = requests.get(f'https://jsonplaceholder.typicode.com/users/{user_id}')
     tasks_request = requests.get(f'https://jsonplaceholder.typicode.com/users/{user_id}/todos')
@@ -12,7 +14,7 @@ def tasks(user_id):
 
     user_info = json.loads(user_info.text)
     tasks = json.loads(tasks_request.text)
-
+    """combine user tasks with todos"""
     for task in tasks:
         task["username"] = user_info["username"]
 
